@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Image Converter</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- ✅ Google AdSense Auto Ads Code -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
+          crossorigin="anonymous"></script>
+
   <style>
     :root{--primary:#0d47a1;--accent:#2196f3;--card-bg:#fff}
     *{box-sizing:border-box}
@@ -15,94 +20,27 @@
     .logo img{height:44px}
     nav a{margin-left:14px;text-decoration:none;color:#333;font-weight:600}
     nav a.cta{background:var(--primary);color:#fff;padding:8px 12px;border-radius:8px}
-
-    .hero{text-align:center;padding:60px 20px;background:linear-gradient(120deg,var(--primary),var(--accent));color:#fff}
-    .hero h1{margin:0;font-size:34px}
-    .hero p{margin:8px 0 0 0;opacity:0.95}
-
-    .blocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1000px;margin:40px auto;padding:0 20px}
-    .block{background:#fff;padding:20px;border-radius:14px;box-shadow:0 6px 16px rgba(0,0,0,0.08);text-align:center}
-    .block h3{margin-top:0;color:var(--primary)}
-
-    .card{width:100%;max-width:520px;margin:40px auto;background:var(--card-bg);padding:24px;border-radius:14px;box-shadow:0 10px 30px rgba(13,71,161,0.12);text-align:center}
-    input[type=file]{width:100%;padding:10px;border-radius:8px;border:1px solid #ddd}
-    button{width:100%;padding:12px;border-radius:8px;border:none;background:var(--primary);color:#fff;font-weight:600;cursor:pointer;margin-top:12px}
-    #preview{max-width:100%;margin-top:12px;border-radius:8px;display:none}
-    #downloadLink{display:none;margin-top:12px;padding:10px 14px;border-radius:8px;background:#2e7d32;color:#fff;text-decoration:none;font-weight:600}
-    
-    footer{margin-top:auto;padding:18px;text-align:center;color:#666;background:#f5f7fb}
   </style>
 </head>
 <body>
-
   <header>
     <div class="logo">
-      <img src="logo.png" alt="Logo"> <!-- upload logo.png -->
-      <div style="font-weight:700;color:#0b2b60">Image Converter</div>
+      <img src="https://via.placeholder.com/44" alt="Logo">
+      <span>Image Converter</span>
     </div>
     <nav>
       <a href="#">Home</a>
       <a href="#">About</a>
-      <a href="#">Converter</a>
-      <a href="#">Contact</a>
-      <a href="#">Sign In</a>
-      <a class="cta" href="#">Login</a>
+      <a class="cta" href="#">Convert</a>
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>Fast & Free Image Converter</h1>
-    <p>Convert PNG, JPG, JPEG to WebP instantly — No signup required.</p>
-  </section>
+  <main style="flex:1;display:flex;align-items:center;justify-content:center;">
+    <h1>Welcome to Image Converter</h1>
+  </main>
 
-  <!-- Converter Card -->
-  <div class="card">
-    <h2>Upload your image</h2>
-    <input id="fileInput" type="file" accept="image/*">
-    <button id="convertBtn">Convert to WebP</button>
-    <img id="preview" alt="preview">
-    <a id="downloadLink">Download .webp</a>
-  </div>
-
-  <footer>© 2025 Image Converter | Built with ❤️ by Astha</footer>
-
-  <script>
-    const input = document.getElementById('fileInput');
-    const preview = document.getElementById('preview');
-    const convertBtn = document.getElementById('convertBtn');
-    const downloadLink = document.getElementById('downloadLink');
-
-    input.addEventListener('change', () => {
-      const file = input.files && input.files[0];
-      if (!file) { preview.style.display='none'; downloadLink.style.display='none'; return; }
-      const reader = new FileReader();
-      reader.onload = e => {
-        preview.src = e.target.result;
-        preview.style.display = 'block';
-        downloadLink.style.display = 'none';
-      };
-      reader.readAsDataURL(file);
-    });
-
-    convertBtn.addEventListener('click', () => {
-      if(!input.files || !input.files[0]) { alert('Please choose an image first'); return; }
-      const file = input.files[0];
-      const filename = file.name.replace(/\.[^/.]+$/, "");
-      const img = new Image();
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        canvas.width = img.naturalWidth;
-        canvas.height = img.naturalHeight;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0);
-        const webpData = canvas.toDataURL('image/webp', 0.92);
-        downloadLink.href = webpData;
-        downloadLink.download = filename + '.webp';
-        downloadLink.textContent = 'Download .webp';
-        downloadLink.style.display = 'inline-block';
-      };
-      img.src = preview.src;
-    });
-  </script>
+  <footer style="text-align:center;padding:12px;background:#fff;">
+    <p>© 2025 Image Converter</p>
+  </footer>
 </body>
 </html>
